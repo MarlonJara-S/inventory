@@ -15,6 +15,7 @@ from datetime import timedelta
 import environ
 import os
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -23,10 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3eo$4qis$2k*s6y(^fad_vgfjp93t#z472&_&w!%yyims6$_=1'
+from django.core.management.utils import get_random_secret_key
+print(get_random_secret_key())
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -100,9 +102,16 @@ WSGI_APPLICATION = 'inventory.wsgi.application'
 env = environ.Env()
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
+
 DATABASES = {
     'default': env.db('DATABASE_URL')  # Django toma la URL desde la variable de entorno
 }
+
+# Usar la clave secreta desde las variables de entorno
+SECRET_KEY = env('DJANGO_SECRET_KEY')
+
+# Otras configuraciones
+DEBUG = env.bool('DEBUG', default=False)
 
 
 # Password validation
