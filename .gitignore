@@ -1,0 +1,49 @@
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Entorno virtual
+venv/
+env/
+*.pyc
+__pycache__/
+
+# Archivos de configuración local
+*.env
+.env.*
+
+# Archivos de base de datos locales
+db.sqlite3
+*.sqlite3
+
+# Archivos estáticos generados
+/staticfiles/
+/mediafiles/
+
+# Archivos de migración generados
+*/migrations/*.pyc
+*/migrations/__pycache__/
+*/migrations/*_initial.py
+
+# Logs y debugging
+*.log
+debug.log
+
+# Configuración de IDEs
+.vscode/
+.idea/
+*.iml
+
+# Archivos generados por tests
+htmlcov/
+.coverage
+*.coverage
+
+# Archivos de despliegue
+*.pid
+*.sock
+
+# Archivos relacionados con Gunicorn y Nginx
+gunicorn_error.log
+nginx_error.log
+nginx_access.log
